@@ -32,7 +32,8 @@ function parseParameters (options) {
     var opt = {
         maximumAge: 0,
         enableHighAccuracy: false,
-        timeout: Infinity
+        timeout: Infinity,
+        backgroundLocation: false
     };
 
     if (options) {
@@ -48,6 +49,9 @@ function parseParameters (options) {
             } else {
                 opt.timeout = options.timeout;
             }
+        }
+        if (options.backgroundLocation !== undefined) {
+            opt.backgroundLocation = options.backgroundLocation;
         }
     }
 
@@ -190,7 +194,7 @@ var geolocation = {
             successCallback(pos);
         };
 
-        exec(win, fail, 'Geolocation', 'addWatch', [id, options.enableHighAccuracy]);
+        exec(win, fail, 'Geolocation', 'addWatch', [id, options.enableHighAccuracy, options.backgroundLocation]);
 
         return id;
     },
