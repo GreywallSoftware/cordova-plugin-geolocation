@@ -59,6 +59,7 @@
     self.locationManager.delegate = self; // Tells the location manager to send updates to this object
     __locationStarted = NO;
     __highAccuracyEnabled = NO;
+    __backgroundLocation = NO;
     self.locationData = nil;
 }
 
@@ -134,6 +135,7 @@
     // Tell the location manager to start notifying us of location updates. We
     // first stop, and then start the updating to ensure we get at least one
     // update, even if our location did not change.
+    self.locationManager.allowsBackgroundLocationUpdates = __backgroundLocation ? YES : NO;
     [self.locationManager stopUpdatingLocation];
     [self.locationManager startUpdatingLocation];
     __locationStarted = YES;
@@ -234,6 +236,8 @@
     NSString* callbackId = command.callbackId;
     NSString* timerId = [command argumentAtIndex:0];
     BOOL enableHighAccuracy = [[command argumentAtIndex:1] boolValue];
+    __backgroundLocation = [[command argumentAtIndex:2] boolValue];
+    
     
     if (!self.locationData) {
         self.locationData = [[CDVLocationData alloc] init];
