@@ -59,6 +59,7 @@
     self.locationManager.delegate = self; // Tells the location manager to send updates to this object
     __locationStarted = NO;
     __highAccuracyEnabled = NO;
+    __backgroundLocation = NO;
     self.locationData = nil;
 }
 
