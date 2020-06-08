@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-geolocation.geolocation", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -40,9 +39,9 @@ function parseParameters (options) {
         if (options.maximumAge !== undefined && !isNaN(options.maximumAge) && options.maximumAge > 0) {
             opt.maximumAge = options.maximumAge;
         }
-       if (options.enableHighAccuracy !== undefined) {
-           opt.enableHighAccuracy = options.enableHighAccuracy;
-       }
+        if (options.enableHighAccuracy !== undefined) {
+            opt.enableHighAccuracy = options.enableHighAccuracy;
+        }
         if (options.timeout !== undefined && !isNaN(options.timeout)) {
             if (options.timeout < 0) {
                 opt.timeout = 0;
@@ -210,5 +209,3 @@ var geolocation = {
 };
 
 module.exports = geolocation;
-
-});
