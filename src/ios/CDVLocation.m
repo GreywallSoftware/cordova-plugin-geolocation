@@ -136,6 +136,7 @@
     // first stop, and then start the updating to ensure we get at least one
     // update, even if our location did not change.
     self.locationManager.allowsBackgroundLocationUpdates = __backgroundLocation ? YES : NO;
+    self.locationManager.pausesLocationUpdatesAutomatically = __backgroundLocation ? NO : YES;
     [self.locationManager stopUpdatingLocation];
     [self.locationManager startUpdatingLocation];
     __locationStarted = YES;
